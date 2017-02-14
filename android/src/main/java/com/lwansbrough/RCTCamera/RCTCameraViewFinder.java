@@ -353,7 +353,7 @@ class RCTCameraViewFinder extends TextureView implements TextureView.SurfaceText
             this.camera = camera;
             this.imageData = imageData;
             this.detector = new BarcodeDetector.Builder(this.mContext)
-                                                    .setBarcodeFormats(Barcode.CODE_39)
+                                                    .setBarcodeFormats(Barcode.ALL_FORMATS)
                                                     .build();
             GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
             int status = googleApiAvailability.isGooglePlayServicesAvailable(context);
@@ -398,7 +398,7 @@ class RCTCameraViewFinder extends TextureView implements TextureView.SurfaceText
                   Barcode thisCode = barcodes.valueAt(0);
 
                   event.putString("data", thisCode.rawValue);
-                  event.putString("type", "CODE_39");
+                  event.putString("type", "UNKNOWN");
 
                 } else {
                   PlanarYUVLuminanceSource source = new PlanarYUVLuminanceSource(imageData, width, height, 0, 0, width, height, reverseHorizontal);
